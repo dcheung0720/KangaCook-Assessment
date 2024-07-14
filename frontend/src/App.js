@@ -3,9 +3,11 @@ import './App.css';
 import {useState, useEffect} from 'react';
 import BookCard from './components/BookCard';
 import Button from 'react-bootstrap/Button';
+import BookForm from './components/BookForm';
 
 function App() {
   const [books, setBooks] = useState([]);
+  const [bookFormVis, setBookFormVis] = useState(false);
 
   // set the books state once the page loads.
   useEffect(()=>{
@@ -14,34 +16,19 @@ function App() {
     .then(data => setBooks(data))
   }, []);
 
-  // handle add book
-  const handleAddBook = () =>{
-    fetch('http://localhost:8000/api/bookCollection/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        title: 'David Diary',
-        author: 'Carmx',
-        pages: "200",
-        finished: "Yes"
-      })
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Success:', data);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      })};
-
   return (
     <div className="App">
-        <div><Button variant="primary" onClick={handleAddBook}>Add Book +</Button></div>
-        <div style={{display: "flex", justifyContent: "center"}}>
-          {books.map((book, i) => <BookCard key = {i} book = {book}></BookCard>)}
+        <div className = "content" style = {{width: "80%"}}>
+          <div><Button variant="primary" onClick={() => setBookFormVis(prev => !prev)}>Add Book +</Button></div>
+          <div style={{display: "flex", justifyContent: "center", flexWrap: "wrap"}}>
+            {books.map((book, i) => <BookCard key = {i} book = {book}></BookCard>)}
+          </div>
         </div>
+        {bookFormVis && 
+            <div style = {{width: "100%", height: "100%", position: "absolute", backgroundColor: "rgba(0,0,0,0.4)"}} onClick={() => setBookFormVis(prev => !prev)}>
+              <BookForm></BookForm>
+            </div>
+          }
     </div>
   );
 }
