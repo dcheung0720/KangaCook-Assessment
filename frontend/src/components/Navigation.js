@@ -7,7 +7,7 @@ function BasicExample() {
   return (
     <Navbar bg="dark" data-bs-theme="dark">
       <Container style = {{display: "flex", justifyContent: "center"}}>
-        <Navbar.Brand href="#home">Book Tracker</Navbar.Brand>
+        <h1 style = {{color: "white"}}>Book Tracker</h1>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
       </Container>
     </Navbar>
