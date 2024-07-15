@@ -8,7 +8,7 @@ const BookCard = ({book, id}) =>{
   const [editFormVis, setEditFormVis] = useState(false);
 
   return(<Card style={{ width: '18rem', height: "275px", display: "flex", justifyContent: "center", margin: "20px"}}>
-      {editFormVis && <EditBookForm book = {book} id = {id}></EditBookForm>}
+      {editFormVis && <EditBookForm book = {book} id = {id} setEditFormVis = {setEditFormVis}></EditBookForm>}
       <Card.Body>
         <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
           <Card.Title>{book.title}</Card.Title>        

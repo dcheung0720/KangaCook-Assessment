@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 
-const EditBookForm = ({book, id}) =>{
+const EditBookForm = ({book, id, setEditFormVis}) =>{
     const [title, setTitle] = useState(book.title);
     const [author, setAuthor] = useState(book.author);
     const [pages, setPages] = useState(book.pages);
@@ -41,29 +41,31 @@ const EditBookForm = ({book, id}) =>{
     };
 
     return (
-        <Card style={{ width: '18rem' , left: "50%", top: "50%", transform: "translate(-50%, -50%)", padding: "10px", border: "3px solid black"}} onClick={FormOnClick}>
-            <Form>
-                <h3>Add a Book</h3>
-                <Form.Group className="mb-3" controlId="formTitle">
-                    <Form.Label>Book Title</Form.Label>
-                    <Form.Control type="text" placeholder="Title" value = {title} onChange={(e) => handleOnChange(e, setTitle)}/>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formAuthor">
-                    <Form.Label>Author</Form.Label>
-                    <Form.Control type="text" placeholder="Author" value = {author} onChange={(e) => handleOnChange(e, setAuthor)}/>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formPages">
-                    <Form.Label>Pages</Form.Label>
-                    <Form.Control type="number" placeholder="Pages" value = {pages} onChange={(e) => handleOnChange(e, setPages)}/>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formFinished">
-                    <Form.Check type="checkbox" label="Finished?" value = {finished} onChange={(e) => handleOnChange(e, setFinished)}/>
-                </Form.Group>
-                <Button variant="primary" type="submit" style={{marginLeft: "35%"}} onClick = {handleAddBook}>
-                    Edit!
-                </Button>
-            </Form>
-        </Card>)
+        <div style = {{width: "100%", top: "0", left: "0", position: "fixed", height: "100%", backgroundColor: "rgba(0,0,0,0.4)", zIndex: 10}} onClick={() => setEditFormVis(prev => !prev)}>
+            <Card style={{ width: '18rem',left: "50%", top: "50%", transform: "translate(-50%, -50%)", padding: "10px", border: "3px solid black"}} onClick={FormOnClick}>
+                <Form>
+                    <h3>Editing...</h3>
+                    <Form.Group className="mb-3" controlId="formTitle">
+                        <Form.Label>Book Title</Form.Label>
+                        <Form.Control type="text" placeholder="Title" value = {title} onChange={(e) => handleOnChange(e, setTitle)}/>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formAuthor">
+                        <Form.Label>Author</Form.Label>
+                        <Form.Control type="text" placeholder="Author" value = {author} onChange={(e) => handleOnChange(e, setAuthor)}/>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formPages">
+                        <Form.Label>Pages</Form.Label>
+                        <Form.Control type="number" placeholder="Pages" value = {pages} onChange={(e) => handleOnChange(e, setPages)}/>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formFinished">
+                        <Form.Check type="checkbox" label="Finished?" value = {finished} onChange={(e) => handleOnChange(e, setFinished)}/>
+                    </Form.Group>
+                    <Button variant="primary" type="submit" style={{marginLeft: "35%"}} onClick = {handleAddBook}>
+                        Edit!
+                    </Button>
+                </Form>
+            </Card>
+        </div>)
     
 };
 
