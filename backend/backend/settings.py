@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-1m_7*5$aow$g*_b37-mns7q%gx@pmf%dmu8-bhw5mzmvoe!&tn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["44.220.147.176"]
 
 
 # Application definition
@@ -127,5 +127,6 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CORS_ORIGIN_WHITELIST = [
-     'http://localhost:3000'
+     'http://localhost:3000',
+     'http://kangacook-my-app.s3-website-us-east-1.amazonaws.com'
 ]

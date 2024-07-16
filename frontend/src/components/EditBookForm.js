@@ -16,7 +16,7 @@ const EditBookForm = ({book, id, setEditFormVis}) =>{
 
     // handle add book
     const handleAddBook = () =>{
-        fetch(`http://localhost:8000/api/bookCollection/${id + 1}/`, {
+        fetch(`http://44.220.147.176:8000/api/bookCollection/${id + 1}/`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'

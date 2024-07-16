@@ -17,7 +17,7 @@ const BookForm = () =>{
 
     // handle add book
     const handleAddBook = () =>{
-        fetch('http://localhost:8000/api/bookCollection/', {
+        fetch('http://44.220.147.176:8000/api/bookCollection/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

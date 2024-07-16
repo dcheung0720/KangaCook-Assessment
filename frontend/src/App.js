@@ -12,7 +12,7 @@ function App() {
 
   // set the books state once the page loads.
   useEffect(()=>{
-    fetch("http://localhost:8000/api/bookCollection/")
+    fetch("http://44.220.147.176:8000/api/bookCollection/")
     .then(res => res.json())
     .then(data => setBooks(data))
   }, []);
